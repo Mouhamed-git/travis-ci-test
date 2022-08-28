@@ -1,0 +1,21 @@
+language: 'nodejs'
+node_js:
+  -13
+
+services: 
+  - docker
+
+install: 
+  - echo "nothing to install"
+
+before_script: 
+  - echo "no script needed"
+
+script: 
+  - docker --version
+  - docker build simple-node .
+  - docker tag simple-node miisteuhdiack/simple-node
+
+after_success: 
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push miisteuhdiack/simple-node
