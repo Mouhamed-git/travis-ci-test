@@ -13,7 +13,7 @@ before_script:
 
 script: 
   - docker --version
-  - docker build simple-node .
+  - docker build -t simple-node .
   - docker tag simple-node miisteuhdiack/simple-node
 
 after_success: 
